@@ -1,3 +1,48 @@
 .navbar {
-  background-color: #fdf3ea !important;
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#home-container {
+  margin-top: 30px;
+  background-image: asset-url('home-background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-
+
+  .lead {
+    font-size: 1.75rem;
+    font-weight: 350;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.page-content {
+  flex: 1 0 auto;
+  background-color: lightgray;
+}
+
+.articles-page {
+  margin-left: 10px;
 }

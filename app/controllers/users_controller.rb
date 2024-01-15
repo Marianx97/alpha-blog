@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(permited_params)
       flash[:notice] = 'User was updated successfully.'
-      redirect_to articles_path
+      redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
     end

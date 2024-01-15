@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(permited_params)
 
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = 'Successfully signed up'
       redirect_to articles_path
     else

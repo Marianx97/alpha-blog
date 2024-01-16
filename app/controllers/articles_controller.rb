@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5)
@@ -47,5 +49,12 @@ class ArticlesController < ApplicationController
 
   def permited_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def authenticate_user
+    if @article.user != current_user
+      flash[:alert] = 'You are not authorized to perform that action'
+      redirect_to @article
+    end
   end
 end

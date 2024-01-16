@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
@@ -44,5 +45,12 @@ class UsersController < ApplicationController
 
   def permited_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def authenticate_user
+    if current_user.nil? || @user != current_user
+      flash[:alert] = 'You are not authorized to perform that action'
+      redirect_to @user
+    end
   end
 end

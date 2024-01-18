@@ -37,6 +37,13 @@ class UsersController < ApplicationController
 
   def edit; end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = 'Account and its associated articles have been deleted'
+    redirect_to root_path
+  end
+
   private
 
   def set_user

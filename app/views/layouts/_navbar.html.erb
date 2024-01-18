@@ -31,6 +31,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Your profile", current_user, class: "dropdown-item"%></li>
               <li><%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item"%></li>
+              <li><%= link_to "Delete your account", user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "All your articles will also be deleted.\nAre you sure you want to delete your account?" }, class: "dropdown-item text-danger" %></li>
             </ul>
           </li>
           <li class="nav-item">

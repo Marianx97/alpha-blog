@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     flash[:notice] = 'Account and its associated articles have been deleted'
     redirect_to root_path
   end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   def authenticate_user
-    if current_user.nil? || @user != current_user
+    if (current_user.nil? || @user != current_user) && !current_user.admin?
       flash[:alert] = 'You are not authorized to perform that action'
       redirect_to @user
     end

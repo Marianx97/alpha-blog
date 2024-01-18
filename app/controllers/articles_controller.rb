@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def authenticate_user
-    if @article.user != current_user
+    if @article.user != current_user && !current_user.admin?
       flash[:alert] = 'You are not authorized to perform that action'
       redirect_to @article
     end

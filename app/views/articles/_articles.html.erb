@@ -12,7 +12,7 @@
             <h5 class="card-title"><%= article.title %></h5>
             <p class="card-text"><%= truncate(article.description, length: 50) %></p>
             <%= link_to 'Show', article_path(article), class: "btn btn-outline-primary" %>
-            <% if logged_in? && article.user == current_user %>
+            <% if logged_in? && (article.user == current_user || current_user.admin?) %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-success" %>
               <%= link_to 'Delete', article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
             <% end %>

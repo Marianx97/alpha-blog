@@ -1,6 +1,6 @@
 <div class="container" style="background-color: lightgray; max-width: none;">
   <% flash.each do |name, msg| %>
-    <div class="alert alert-success alert-dismissible fade show mt-2" style="max-width: max-content;" role="alert">
+    <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger'%> alert-dismissible fade show mt-2" style="max-width: max-content;" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <%= msg %>
     </div>

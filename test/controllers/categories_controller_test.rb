@@ -41,7 +41,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   #   assert_difference('Category.count', -1) do
   #     delete category_url(@category)
   #   end
-
   #   assert_redirected_to categories_url
   # end
 end
